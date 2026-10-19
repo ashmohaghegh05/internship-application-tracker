@@ -609,6 +609,89 @@ textarea {
 }
 
 
+/* APPLICATION RECORDS */
+
+.application-record {
+    display: grid;
+
+    grid-template-columns: 42px 1fr 120px;
+
+    gap: 20px;
+
+    padding: 26px 0;
+
+    border-bottom: 1px solid var(--line);
+
+    align-items: start;
+}
+
+.application-number {
+    margin: 0;
+
+    color: var(--blue);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.application-company {
+    margin: 0;
+
+    color: var(--ink);
+
+    font-size: 22px;
+    font-weight: 800;
+
+    letter-spacing: -0.8px;
+}
+
+.application-role {
+    margin: 5px 0 13px;
+
+    color: var(--graphite);
+
+    font-size: 14px;
+}
+
+.application-meta {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    text-transform: uppercase;
+}
+
+.application-status {
+    justify-self: end;
+
+    min-width: 105px;
+
+    margin: 0;
+
+    padding: 8px 10px;
+
+    border: 1px solid var(--ink);
+
+    color: var(--ink);
+
+    text-align: center;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
 /* RESET */
 
 .reset-section {
@@ -824,9 +907,20 @@ footer p {
         min-height: 235px;
     }
 
+    .application-record {
+        grid-template-columns: 34px 1fr;
+    }
+
+    .application-status {
+        grid-column: 2;
+
+        justify-self: start;
+    }
+
     .reset-section,
     footer {
         flex-direction: column;
+
         align-items: flex-start;
     }
 
