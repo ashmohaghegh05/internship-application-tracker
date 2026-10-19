@@ -10,6 +10,8 @@ const followUpInput = document.querySelector("#follow-up");
 const formMessage = document.querySelector("#form-message");
 const applicationList = document.querySelector("#application-list");
 
+const filterStatus = document.querySelector("#filter-status");
+
 const heroNumber = document.querySelector(".hero-number");
 const summaryNumbers = document.querySelectorAll(".summary-number");
 
@@ -36,6 +38,8 @@ function saveApplications() {
 
 
 let applications = loadApplications();
+
+let currentFilter = "All";
 
 
 function updateSummary() {
@@ -75,6 +79,8 @@ function renderApplications() {
     applicationList.innerHTML = "";
 
 
+    /* EMPTY STATE */
+
     if (applications.length === 0) {
         const emptyState = document.createElement("div");
 
@@ -108,7 +114,56 @@ function renderApplications() {
     }
 
 
-    applications.forEach(function(application, index) {
+    /* FILTER APPLICATIONS */
+
+    let visibleApplications = applications;
+
+
+    if (currentFilter !== "All") {
+        visibleApplications = applications.filter(function(application) {
+            return application.status === currentFilter;
+        });
+    }
+
+
+    /* FILTER HAS NO MATCHES */
+
+    if (visibleApplications.length === 0) {
+        const emptyState = document.createElement("div");
+
+        emptyState.className = "empty-state";
+
+
+        const emptyLabel = document.createElement("p");
+
+        emptyLabel.className = "empty-label";
+        emptyLabel.textContent = "00 / NO MATCHES";
+
+
+        const heading = document.createElement("h4");
+
+        heading.textContent = "No applications match this status.";
+
+
+        const message = document.createElement("p");
+
+        message.textContent =
+            "Choose another filter to view your saved applications.";
+
+
+        emptyState.appendChild(emptyLabel);
+        emptyState.appendChild(heading);
+        emptyState.appendChild(message);
+
+        applicationList.appendChild(emptyState);
+
+        return;
+    }
+
+
+    /* DISPLAY APPLICATIONS */
+
+    visibleApplications.forEach(function(application, index) {
         const article = document.createElement("article");
 
         article.className = "application-record";
@@ -117,7 +172,15 @@ function renderApplications() {
         const number = document.createElement("p");
 
         number.className = "application-number";
-        number.textContent = String(index + 1).padStart(2, "0");
+
+
+        let displayNumber = index + 1;
+
+        if (displayNumber < 10) {
+            displayNumber = "0" + displayNumber;
+        }
+
+        number.textContent = displayNumber;
 
 
         const details = document.createElement("div");
@@ -163,6 +226,7 @@ function renderApplications() {
         article.appendChild(details);
         article.appendChild(status);
 
+
         applicationList.appendChild(article);
     });
 }
@@ -176,6 +240,8 @@ function addApplication() {
     const notes = notesInput.value.trim();
     const followUp = followUpInput.checked;
 
+
+    /* VALIDATION */
 
     if (
         company === "" ||
@@ -192,6 +258,8 @@ function addApplication() {
     }
 
 
+    /* CREATE APPLICATION OBJECT */
+
     const application = {
         id: Date.now(),
         company: company,
@@ -203,23 +271,36 @@ function addApplication() {
     };
 
 
+    /* UPDATE STATE */
+
     applications.push(application);
+
+
+    /* SAVE STATE */
 
     saveApplications();
 
+
+    /* SUCCESS MESSAGE */
 
     formMessage.textContent = "Application added.";
 
     formMessage.className = "form-message success";
 
 
+    /* CLEAR FORM */
+
     form.reset();
 
+
+    /* UPDATE PAGE */
 
     updateSummary();
     renderApplications();
 }
 
+
+/* ADD APPLICATION */
 
 form.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -227,6 +308,17 @@ form.addEventListener("submit", function(event) {
     addApplication();
 });
 
+
+/* FILTER APPLICATIONS */
+
+filterStatus.addEventListener("change", function() {
+    currentFilter = filterStatus.value;
+
+    renderApplications();
+});
+
+
+/* INITIAL PAGE LOAD */
 
 updateSummary();
 renderApplications();
