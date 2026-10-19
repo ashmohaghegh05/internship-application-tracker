@@ -256,6 +256,13 @@ function renderApplications() {
         followUpLabel.appendChild(followUpText);
 
 
+        /* ACTIONS AREA */
+
+        const actions = document.createElement("div");
+
+        actions.className = "application-actions";
+
+
         /* EDITABLE STATUS */
 
         const status = document.createElement("select");
@@ -295,7 +302,27 @@ function renderApplications() {
         });
 
 
-        /* BUILD RECORD */
+        /* DELETE BUTTON */
+
+        const deleteButton = document.createElement("button");
+
+        deleteButton.type = "button";
+        deleteButton.className = "delete-button";
+        deleteButton.textContent = "Delete";
+
+
+        deleteButton.addEventListener("click", function() {
+            deleteApplication(application.id);
+        });
+
+
+        /* BUILD ACTIONS */
+
+        actions.appendChild(status);
+        actions.appendChild(deleteButton);
+
+
+        /* BUILD DETAILS */
 
         details.appendChild(company);
         details.appendChild(role);
@@ -303,9 +330,11 @@ function renderApplications() {
         details.appendChild(followUpLabel);
 
 
+        /* BUILD RECORD */
+
         article.appendChild(number);
         article.appendChild(details);
-        article.appendChild(status);
+        article.appendChild(actions);
 
 
         applicationList.appendChild(article);
@@ -408,6 +437,22 @@ function updateApplicationFollowUp(id, needsFollowUp) {
         if (application.id === id) {
             application.followUp = needsFollowUp;
         }
+    });
+
+
+    saveApplications();
+
+    updateSummary();
+
+    renderApplications();
+}
+
+
+/* DELETE APPLICATION */
+
+function deleteApplication(id) {
+    applications = applications.filter(function(application) {
+        return application.id !== id;
     });
 
 
