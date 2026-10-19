@@ -11,6 +11,7 @@ const formMessage = document.querySelector("#form-message");
 const applicationList = document.querySelector("#application-list");
 
 const filterStatus = document.querySelector("#filter-status");
+const resetButton = document.querySelector("#reset-button");
 
 const heroNumber = document.querySelector(".hero-number");
 const summaryNumbers = document.querySelectorAll(".summary-number");
@@ -156,7 +157,8 @@ function renderApplications() {
 
         const heading = document.createElement("h4");
 
-        heading.textContent = "No applications match this status.";
+        heading.textContent =
+            "No applications match this status.";
 
 
         const message = document.createElement("p");
@@ -244,12 +246,15 @@ function renderApplications() {
         followUpText.textContent = "Needs follow-up";
 
 
-        followUpCheckbox.addEventListener("change", function() {
-            updateApplicationFollowUp(
-                application.id,
-                followUpCheckbox.checked
-            );
-        });
+        followUpCheckbox.addEventListener(
+            "change",
+            function() {
+                updateApplicationFollowUp(
+                    application.id,
+                    followUpCheckbox.checked
+                );
+            }
+        );
 
 
         followUpLabel.appendChild(followUpCheckbox);
@@ -294,12 +299,15 @@ function renderApplications() {
         });
 
 
-        status.addEventListener("change", function() {
-            updateApplicationStatus(
-                application.id,
-                status.value
-            );
-        });
+        status.addEventListener(
+            "change",
+            function() {
+                updateApplicationStatus(
+                    application.id,
+                    status.value
+                );
+            }
+        );
 
 
         /* DELETE BUTTON */
@@ -311,9 +319,12 @@ function renderApplications() {
         deleteButton.textContent = "Delete";
 
 
-        deleteButton.addEventListener("click", function() {
-            deleteApplication(application.id);
-        });
+        deleteButton.addEventListener(
+            "click",
+            function() {
+                deleteApplication(application.id);
+            }
+        );
 
 
         /* BUILD ACTIONS */
@@ -364,7 +375,8 @@ function addApplication() {
         formMessage.textContent =
             "Please complete the company, role, date, and status before adding the application.";
 
-        formMessage.className = "form-message error";
+        formMessage.className =
+            "form-message error";
 
         return;
     }
@@ -395,9 +407,11 @@ function addApplication() {
 
     /* SUCCESS MESSAGE */
 
-    formMessage.textContent = "Application added.";
+    formMessage.textContent =
+        "Application added.";
 
-    formMessage.className = "form-message success";
+    formMessage.className =
+        "form-message success";
 
 
     /* CLEAR FORM */
@@ -414,7 +428,10 @@ function addApplication() {
 
 /* UPDATE APPLICATION STATUS */
 
-function updateApplicationStatus(id, newStatus) {
+function updateApplicationStatus(
+    id,
+    newStatus
+) {
     applications.forEach(function(application) {
         if (application.id === id) {
             application.status = newStatus;
@@ -432,10 +449,14 @@ function updateApplicationStatus(id, newStatus) {
 
 /* UPDATE FOLLOW-UP */
 
-function updateApplicationFollowUp(id, needsFollowUp) {
+function updateApplicationFollowUp(
+    id,
+    needsFollowUp
+) {
     applications.forEach(function(application) {
         if (application.id === id) {
-            application.followUp = needsFollowUp;
+            application.followUp =
+                needsFollowUp;
         }
     });
 
@@ -451,9 +472,11 @@ function updateApplicationFollowUp(id, needsFollowUp) {
 /* DELETE APPLICATION */
 
 function deleteApplication(id) {
-    applications = applications.filter(function(application) {
-        return application.id !== id;
-    });
+    applications = applications.filter(
+        function(application) {
+            return application.id !== id;
+        }
+    );
 
 
     saveApplications();
@@ -464,22 +487,69 @@ function deleteApplication(id) {
 }
 
 
+/* RESET TRACKER */
+
+function resetTracker() {
+    applications = [];
+
+
+    localStorage.removeItem(storageKey);
+
+
+    currentFilter = "All";
+
+    filterStatus.value = "All";
+
+
+    form.reset();
+
+
+    formMessage.textContent =
+        "Tracker cleared. You can start again whenever you are ready.";
+
+    formMessage.className =
+        "form-message success";
+
+
+    updateSummary();
+
+    renderApplications();
+}
+
+
 /* ADD APPLICATION EVENT */
 
-form.addEventListener("submit", function(event) {
-    event.preventDefault();
+form.addEventListener(
+    "submit",
+    function(event) {
+        event.preventDefault();
 
-    addApplication();
-});
+        addApplication();
+    }
+);
 
 
 /* FILTER EVENT */
 
-filterStatus.addEventListener("change", function() {
-    currentFilter = filterStatus.value;
+filterStatus.addEventListener(
+    "change",
+    function() {
+        currentFilter =
+            filterStatus.value;
 
-    renderApplications();
-});
+        renderApplications();
+    }
+);
+
+
+/* RESET EVENT */
+
+resetButton.addEventListener(
+    "click",
+    function() {
+        resetTracker();
+    }
+);
 
 
 /* INITIAL PAGE LOAD */
