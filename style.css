@@ -669,6 +669,23 @@ textarea {
 }
 
 
+/* APPLICATION NOTES */
+
+.application-notes {
+    max-width: 520px;
+
+    margin: 14px 0 0;
+    padding-left: 14px;
+
+    border-left: 2px solid var(--line);
+
+    color: var(--graphite);
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
 /* APPLICATION ACTIONS */
 
 .application-actions {
@@ -1002,6 +1019,10 @@ footer p {
     .application-status-select,
     .delete-button {
         width: 150px;
+    }
+
+    .application-notes {
+        max-width: 100%;
     }
 
     .reset-section,
