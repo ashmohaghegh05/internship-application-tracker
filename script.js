@@ -228,6 +228,17 @@ function renderApplications() {
             "Applied " + application.dateApplied;
 
 
+        /* NOTES */
+
+        const notes = document.createElement("p");
+
+        notes.className = "application-notes";
+
+        if (application.notes !== "") {
+            notes.textContent = application.notes;
+        }
+
+
         /* FOLLOW-UP CHECKBOX */
 
         const followUpLabel = document.createElement("label");
@@ -338,6 +349,13 @@ function renderApplications() {
         details.appendChild(company);
         details.appendChild(role);
         details.appendChild(meta);
+
+
+        if (application.notes !== "") {
+            details.appendChild(notes);
+        }
+
+
         details.appendChild(followUpLabel);
 
 
