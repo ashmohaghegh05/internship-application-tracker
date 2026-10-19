@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="An internship application tracker for organizing applications, statuses, interviews, offers, and follow-ups.">
+
+    <title>Internship Application Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+
+        <div class="header-inner">
+
+            <a class="brand"
+               href="index.html">
+                APPLICATION<span>/03</span>
+            </a>
+
+            <p class="header-meta">
+                INTERNSHIP SEARCH RECORD
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-main">
+
+                <p class="eyebrow">
+                    INTERNSHIP APPLICATION TRACKER
+                </p>
+
+                <h1>
+                    See the<br>
+                    whole search.
+                </h1>
+
+                <p class="hero-copy">
+                    One place to record every application,
+                    understand your progress, and see what
+                    needs attention next.
+                </p>
+
+            </div>
+
+
+            <aside class="hero-stat"
+                   aria-label="Current application total">
+
+                <p class="stat-label">
+                    APPLICATIONS LOGGED
+                </p>
+
+                <p class="hero-number">
+                    0
+                </p>
+
+                <p class="hero-stat-copy">
+                    Your application progress will appear here
+                    as you build your search.
+                </p>
+
+            </aside>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="summary-section"
+                 aria-labelledby="summary-heading">
+
+            <div class="section-top">
+
+                <span class="section-number">
+                    01
+                </span>
+
+                <h2 id="summary-heading"
+                    class="section-title">
+                    CURRENT POSITION
+                </h2>
+
+            </div>
+
+
+            <div class="summary-grid">
+
+                <article class="summary-item summary-primary">
+
+                    <p class="summary-number">
+                        0
+                    </p>
+
+                    <p class="summary-label">
+                        TOTAL APPLICATIONS
+                    </p>
+
+                </article>
+
+
+                <article class="summary-item">
+
+                    <p class="summary-number">
+                        0
+                    </p>
+
+                    <p class="summary-label">
+                        ACTIVE
+                    </p>
+
+                </article>
+
+
+                <article class="summary-item">
+
+                    <p class="summary-number">
+                        0
+                    </p>
+
+                    <p class="summary-label">
+                        INTERVIEWS
+                    </p>
+
+                </article>
+
+
+                <article class="summary-item">
+
+                    <p class="summary-number">
+                        0
+                    </p>
+
+                    <p class="summary-label">
+                        OFFERS
+                    </p>
+
+                </article>
+
+
+                <article class="summary-item">
+
+                    <p class="summary-number">
+                        0
+                    </p>
+
+                    <p class="summary-label">
+                        FOLLOW-UPS
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- MANAGE APPLICATIONS -->
+
+        <section class="manage-section"
+                 aria-labelledby="manage-heading">
+
+            <div class="section-top">
+
+                <span class="section-number">
+                    02
+                </span>
+
+                <h2 id="manage-heading"
+                    class="section-title">
+                    MANAGE APPLICATIONS
+                </h2>
+
+            </div>
+
+
+            <div class="workspace">
+
+                <!-- FORM -->
+
+                <section class="form-panel"
+                         aria-labelledby="form-heading">
+
+                    <h3 id="form-heading">
+                        Add application
+                    </h3>
+
+                    <p class="section-copy">
+                        Capture the information you will need
+                        as the application moves forward.
+                    </p>
+
+
+                    <form id="application-form">
+
+                        <div class="field">
+
+                            <label for="company">
+                                COMPANY
+                            </label>
+
+                            <input
+                                id="company"
+                                name="company"
+                                type="text"
+                                placeholder="Deloitte"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="role">
+                                ROLE
+                            </label>
+
+                            <input
+                                id="role"
+                                name="role"
+                                type="text"
+                                placeholder="Strategy Intern"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="date-applied">
+                                DATE APPLIED
+                            </label>
+
+                            <input
+                                id="date-applied"
+                                name="dateApplied"
+                                type="date"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="status">
+                                STATUS
+                            </label>
+
+                            <select
+                                id="status"
+                                name="status"
+                                required
+                            >
+                                <option value="Applied">
+                                    Applied
+                                </option>
+
+                                <option value="Interview">
+                                    Interview
+                                </option>
+
+                                <option value="Offer">
+                                    Offer
+                                </option>
+
+                                <option value="Rejected">
+                                    Rejected
+                                </option>
+                            </select>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="notes">
+                                NOTES
+                            </label>
+
+                            <textarea
+                                id="notes"
+                                name="notes"
+                                placeholder="Anything worth remembering..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <label class="checkbox-row">
+
+                            <input
+                                id="follow-up"
+                                name="followUp"
+                                type="checkbox"
+                            >
+
+                            Needs follow-up
+
+                        </label>
+
+
+                        <p id="form-message"
+                           class="form-message"
+                           aria-live="polite">
+                        </p>
+
+
+                        <button
+                            class="primary-button"
+                            type="submit"
+                        >
+                            Add Application
+                        </button>
+
+                    </form>
+
+                </section>
+
+
+                <!-- APPLICATION RECORD -->
+
+                <section class="record-panel"
+                         aria-labelledby="record-heading">
+
+                    <div class="record-heading-row">
+
+                        <div>
+
+                            <h3 id="record-heading">
+                                Application record
+                            </h3>
+
+                            <p class="section-copy">
+                                Review your pipeline and focus on
+                                what needs attention.
+                            </p>
+
+                        </div>
+
+
+                        <div class="filter-control">
+
+                            <label for="filter-status">
+                                FILTER STATUS
+                            </label>
+
+                            <select id="filter-status">
+
+                                <option value="All">
+                                    All
+                                </option>
+
+                                <option value="Applied">
+                                    Applied
+                                </option>
+
+                                <option value="Interview">
+                                    Interview
+                                </option>
+
+                                <option value="Offer">
+                                    Offer
+                                </option>
+
+                                <option value="Rejected">
+                                    Rejected
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="application-list"
+                         class="application-list">
+
+                        <div class="empty-state">
+
+                            <p class="empty-label">
+                                00 / EMPTY
+                            </p>
+
+                            <h4>
+                                No applications yet.
+                            </h4>
+
+                            <p>
+                                Add your first internship application
+                                to begin tracking your search.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESET -->
+
+        <section class="reset-section">
+
+            <p>
+                Resetting removes all locally saved application data
+                and returns this tracker to its empty state.
+            </p>
+
+            <button
+                id="reset-button"
+                class="reset-button"
+                type="button"
+            >
+                Reset All
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            Internship Application Tracker
+        </p>
+
+        <p>
+            Mini Project 2
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
