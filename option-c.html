@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Design Option C</title>
+
+    <style>
+
+        :root {
+            --paper: #f7f7f2;
+            --ink: #121212;
+            --blue: #2457ff;
+            --blue-dark: #1639b7;
+            --muted: #6c6c68;
+            --line: #c9c9c2;
+            --soft: #ecece5;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: var(--paper);
+            color: var(--ink);
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+
+        /* HEADER */
+
+        .site-header {
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .header-inner {
+            max-width: 1240px;
+
+            margin: 0 auto;
+            padding: 18px 30px;
+
+            display: grid;
+            grid-template-columns: 1fr auto;
+
+            gap: 30px;
+
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 19px;
+            font-weight: 800;
+
+            letter-spacing: -0.6px;
+        }
+
+        .brand-number {
+            color: var(--blue);
+        }
+
+        .header-meta {
+            color: var(--muted);
+
+            font-size: 11px;
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+
+        /* MAIN */
+
+        main {
+            max-width: 1240px;
+
+            margin: 0 auto;
+            padding: 0 30px 90px;
+        }
+
+
+        /* HERO */
+
+        .hero {
+            min-height: 440px;
+
+            display: grid;
+
+            grid-template-columns: 1.45fr 0.55fr;
+
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .hero-main {
+            padding: 65px 55px 55px 0;
+
+            border-right: 1px solid var(--line);
+        }
+
+        .hero-side {
+            padding: 65px 0 55px 35px;
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: space-between;
+        }
+
+        .eyebrow {
+            margin: 0 0 22px;
+
+            color: var(--blue);
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 760px;
+
+            margin: 0;
+
+            font-size: clamp(62px, 9vw, 116px);
+
+            line-height: 0.84;
+
+            letter-spacing: -7px;
+        }
+
+        .hero-copy {
+            max-width: 650px;
+
+            margin: 32px 0 0;
+
+            color: var(--muted);
+
+            font-size: 18px;
+            line-height: 1.65;
+        }
+
+        .hero-side-label {
+            color: var(--muted);
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: 1.6px;
+
+            text-transform: uppercase;
+        }
+
+        .hero-side-number {
+            margin-top: 10px;
+
+            color: var(--blue);
+
+            font-size: 86px;
+            font-weight: 800;
+
+            line-height: 0.9;
+
+            letter-spacing: -5px;
+        }
+
+        .hero-side-copy {
+            max-width: 220px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* SECTION TITLE */
+
+        .section-top {
+            padding: 22px 0;
+
+            border-bottom: 1px solid var(--line);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .section-index {
+            color: var(--blue);
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+        .section-name {
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 1.4px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* SUMMARY */
+
+        .summary {
+            display: grid;
+
+            grid-template-columns: repeat(5, 1fr);
+
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .summary-item {
+            min-height: 190px;
+
+            padding: 30px 24px;
+
+            border-right: 1px solid var(--line);
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: space-between;
+        }
+
+        .summary-item:last-child {
+            border-right: none;
+        }
+
+        .summary-item.primary {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        .summary-number {
+            font-size: clamp(56px, 6vw, 82px);
+            font-weight: 800;
+
+            line-height: 0.9;
+
+            letter-spacing: -5px;
+        }
+
+        .summary-label {
+            max-width: 110px;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            line-height: 1.35;
+
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .summary-item:not(.primary) .summary-label {
+            color: var(--muted);
+        }
+
+
+        /* WORKSPACE */
+
+        .workspace {
+            display: grid;
+
+            grid-template-columns: 0.78fr 1.22fr;
+
+            border-bottom: 2px solid var(--ink);
+        }
+
+
+        /* FORM */
+
+        .form-panel {
+            padding: 45px 40px 50px 0;
+
+            border-right: 1px solid var(--line);
+        }
+
+        .list-panel {
+            padding: 45px 0 50px 40px;
+        }
+
+        h2 {
+            margin: 0 0 12px;
+
+            font-size: 36px;
+
+            line-height: 1;
+
+            letter-spacing: -1.8px;
+        }
+
+        .section-copy {
+            margin: 0 0 32px;
+
+            max-width: 420px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+        .field {
+            margin-bottom: 19px;
+        }
+
+        label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: var(--ink);
+
+            font-size: 10px;
+            font-weight: 800;
+
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+
+            padding: 13px 0;
+
+            border: none;
+            border-bottom: 1px solid var(--ink);
+
+            border-radius: 0;
+
+            background: transparent;
+
+            color: var(--ink);
+
+            outline: none;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #92928c;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-bottom: 3px solid var(--blue);
+        }
+
+        textarea {
+            min-height: 80px;
+
+            resize: vertical;
+        }
+
+        .check-row {
+            margin: 28px 0;
+
+            display: flex;
+            align-items: center;
+
+            gap: 11px;
+
+            color: var(--ink);
+
+            font-size: 12px;
+
+            text-transform: none;
+        }
+
+        .check-row input {
+            width: 17px;
+            height: 17px;
+
+            accent-color: var(--blue);
+        }
+
+        .primary-button {
+            width: 100%;
+
+            padding: 15px 20px;
+
+            border: 2px solid var(--ink);
+
+            background: var(--ink);
+            color: var(--white);
+
+            font-weight: 800;
+
+            letter-spacing: 0.5px;
+
+            cursor: pointer;
+        }
+
+        .primary-button:hover {
+            border-color: var(--blue);
+
+            background: var(--blue);
+        }
+
+
+        /* LIST TOOLBAR */
+
+        .list-toolbar {
+            margin-bottom: 28px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 190px;
+
+            gap: 30px;
+
+            align-items: end;
+        }
+
+
+        /* APPLICATIONS */
+
+        .application-list {
+            border-top: 2px solid var(--ink);
+        }
+
+        .application {
+            display: grid;
+
+            grid-template-columns: 56px 1fr 130px;
+
+            gap: 20px;
+
+            padding: 25px 0;
+
+            border-bottom: 1px solid var(--line);
+
+            align-items: start;
+        }
+
+        .application-number {
+            color: var(--blue);
+
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .company {
+            margin: 0;
+
+            font-size: 22px;
+            font-weight: 800;
+
+            letter-spacing: -0.8px;
+        }
+
+        .role {
+            margin: 5px 0 15px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+        .application-meta {
+            display: flex;
+
+            gap: 18px;
+
+            flex-wrap: wrap;
+
+            color: var(--muted);
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: 0.8px;
+
+            text-transform: uppercase;
+        }
+
+        .attention {
+            color: var(--blue);
+        }
+
+        .status {
+            justify-self: end;
+
+            width: 112px;
+
+            padding: 8px 10px;
+
+            border: 1px solid var(--ink);
+
+            text-align: center;
+
+            font-size: 10px;
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+        .status.interview {
+            border-color: var(--blue);
+
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        .status.offer {
+            background: var(--ink);
+            color: var(--white);
+        }
+
+
+        /* RESET */
+
+        .reset-area {
+            padding: 30px 0;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 30px;
+        }
+
+        .reset-copy {
+            max-width: 650px;
+
+            margin: 0;
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+        .reset-button {
+            padding: 11px 17px;
+
+            border: 1px solid var(--ink);
+
+            background: transparent;
+            color: var(--ink);
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .reset-button:hover {
+            background: var(--ink);
+            color: var(--white);
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            max-width: 1240px;
+
+            margin: 0 auto;
+
+            padding: 24px 30px;
+
+            border-top: 1px solid var(--line);
+
+            display: flex;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-main {
+                border-right: none;
+            }
+
+            .hero-side {
+                padding:
+                    30px 0
+                    40px;
+
+                border-top: 1px solid var(--line);
+
+                flex-direction: row;
+
+                align-items: end;
+            }
+
+            .summary {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .summary-item {
+                border-bottom:
+                    1px solid var(--line);
+            }
+
+            .workspace {
+                grid-template-columns: 1fr;
+            }
+
+            .form-panel {
+                padding-right: 0;
+
+                border-right: none;
+                border-bottom: 2px solid var(--ink);
+            }
+
+            .list-panel {
+                padding-left: 0;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .header-inner,
+            main,
+            footer {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .header-meta {
+                display: none;
+            }
+
+            .hero-main {
+                padding-top: 45px;
+            }
+
+            h1 {
+                font-size: 64px;
+
+                letter-spacing: -4px;
+            }
+
+            .hero-side {
+                display: block;
+            }
+
+            .hero-side-copy {
+                margin-top: 25px;
+            }
+
+            .summary {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-item {
+                min-height: 145px;
+
+                border-right: none;
+            }
+
+            .list-toolbar {
+                grid-template-columns: 1fr;
+            }
+
+            .application {
+                grid-template-columns: 35px 1fr;
+            }
+
+            .status {
+                grid-column: 2;
+
+                justify-self: start;
+            }
+
+            .reset-area,
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <header class="site-header">
+
+        <div class="header-inner">
+
+            <div class="brand">
+                APPLICATION<span class="brand-number">/03</span>
+            </div>
+
+            <div class="header-meta">
+                Internship Search Record • Fall 2026
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-main">
+
+                <p class="eyebrow">
+                    Internship Application Tracker
+                </p>
+
+                <h1>
+                    See the<br>
+                    whole search.
+                </h1>
+
+                <p class="hero-copy">
+                    One place to record every application,
+                    understand your progress and see what
+                    needs attention next.
+                </p>
+
+            </div>
+
+
+            <aside class="hero-side">
+
+                <div>
+
+                    <div class="hero-side-label">
+                        Applications logged
+                    </div>
+
+                    <div class="hero-side-number">
+                        12
+                    </div>
+
+                </div>
+
+                <p class="hero-side-copy">
+                    Your application progress is the main
+                    information on this page. Everything else
+                    supports it.
+                </p>
+
+            </aside>
+
+        </section>
+
+
+        <section>
+
+            <div class="section-top">
+
+                <span class="section-index">
+                    01
+                </span>
+
+                <span class="section-name">
+                    Current Position
+                </span>
+
+            </div>
+
+
+            <div class="summary">
+
+                <div class="summary-item primary">
+
+                    <span class="summary-number">
+                        12
+                    </span>
+
+                    <span class="summary-label">
+                        Total Applications
+                    </span>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <span class="summary-number">
+                        06
+                    </span>
+
+                    <span class="summary-label">
+                        Active
+                    </span>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <span class="summary-number">
+                        03
+                    </span>
+
+                    <span class="summary-label">
+                        Interviews
+                    </span>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <span class="summary-number">
+                        01
+                    </span>
+
+                    <span class="summary-label">
+                        Offers
+                    </span>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <span class="summary-number">
+                        04
+                    </span>
+
+                    <span class="summary-label">
+                        Follow-Ups
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section>
+
+            <div class="section-top">
+
+                <span class="section-index">
+                    02
+                </span>
+
+                <span class="section-name">
+                    Manage Applications
+                </span>
+
+            </div>
+
+
+            <div class="workspace">
+
+                <div class="form-panel">
+
+                    <h2>
+                        Add application
+                    </h2>
+
+                    <p class="section-copy">
+                        Capture the information you will need
+                        when the application moves forward.
+                    </p>
+
+
+                    <form>
+
+                        <div class="field">
+
+                            <label for="company">
+                                Company
+                            </label>
+
+                            <input
+                                id="company"
+                                type="text"
+                                placeholder="Deloitte"
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="role">
+                                Role
+                            </label>
+
+                            <input
+                                id="role"
+                                type="text"
+                                placeholder="Strategy Intern"
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="date">
+                                Date Applied
+                            </label>
+
+                            <input
+                                id="date"
+                                type="date"
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="status">
+                                Status
+                            </label>
+
+                            <select id="status">
+
+                                <option>
+                                    Applied
+                                </option>
+
+                                <option>
+                                    Interview
+                                </option>
+
+                                <option>
+                                    Offer
+                                </option>
+
+                                <option>
+                                    Rejected
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="notes">
+                                Notes
+                            </label>
+
+                            <textarea
+                                id="notes"
+                                placeholder="Anything worth remembering..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <label class="check-row">
+
+                            <input type="checkbox">
+
+                            Needs follow-up
+
+                        </label>
+
+
+                        <button
+                            class="primary-button"
+                            type="button"
+                        >
+                            Add Application
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <div class="list-panel">
+
+                    <div class="list-toolbar">
+
+                        <div>
+
+                            <h2>
+                                Application record
+                            </h2>
+
+                            <p class="section-copy">
+                                Review the pipeline and focus on
+                                what needs attention.
+                            </p>
+
+                        </div>
+
+
+                        <div>
+
+                            <label for="filter">
+                                Filter status
+                            </label>
+
+                            <select id="filter">
+
+                                <option>
+                                    All
+                                </option>
+
+                                <option>
+                                    Applied
+                                </option>
+
+                                <option>
+                                    Interview
+                                </option>
+
+                                <option>
+                                    Offer
+                                </option>
+
+                                <option>
+                                    Rejected
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="application-list">
+
+                        <article class="application">
+
+                            <span class="application-number">
+                                01
+                            </span>
+
+                            <div>
+
+                                <h3 class="company">
+                                    Deloitte
+                                </h3>
+
+                                <p class="role">
+                                    Strategy Intern
+                                </p>
+
+                                <div class="application-meta">
+
+                                    <span>
+                                        Applied Oct 15
+                                    </span>
+
+                                    <span class="attention">
+                                        Follow-Up
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            <span class="status">
+                                Applied
+                            </span>
+
+                        </article>
+
+
+                        <article class="application">
+
+                            <span class="application-number">
+                                02
+                            </span>
+
+                            <div>
+
+                                <h3 class="company">
+                                    Restaurant Brands International
+                                </h3>
+
+                                <p class="role">
+                                    Leadership Development Intern
+                                </p>
+
+                                <div class="application-meta">
+
+                                    <span>
+                                        Applied Oct 10
+                                    </span>
+
+                                    <span>
+                                        No Action
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            <span class="status interview">
+                                Interview
+                            </span>
+
+                        </article>
+
+
+                        <article class="application">
+
+                            <span class="application-number">
+                                03
+                            </span>
+
+                            <div>
+
+                                <h3 class="company">
+                                    Bain & Company
+                                </h3>
+
+                                <p class="role">
+                                    Associate Consultant Intern
+                                </p>
+
+                                <div class="application-meta">
+
+                                    <span>
+                                        Applied Oct 04
+                                    </span>
+
+                                    <span class="attention">
+                                        Follow-Up
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            <span class="status">
+                                Applied
+                            </span>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="reset-area">
+
+            <p class="reset-copy">
+                Resetting removes all locally saved application data
+                and returns this tracker to its empty state.
+            </p>
+
+            <button
+                class="reset-button"
+                type="button"
+            >
+                Reset All
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <span>
+            Internship Application Tracker
+        </span>
+
+        <span>
+            Mini Project 2
+        </span>
+
+    </footer>
+
+</body>
+
+</html>
