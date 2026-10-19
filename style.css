@@ -668,27 +668,109 @@ textarea {
     text-transform: uppercase;
 }
 
-.application-status {
-    justify-self: end;
 
-    min-width: 105px;
+/* APPLICATION ACTIONS */
 
-    margin: 0;
+.application-actions {
+    display: flex;
+    flex-direction: column;
 
-    padding: 8px 10px;
+    align-items: stretch;
+
+    gap: 12px;
+}
+
+
+/* STATUS SELECT */
+
+.application-status-select {
+    width: 120px;
+
+    padding: 8px 6px;
 
     border: 1px solid var(--ink);
 
-    color: var(--ink);
+    border-radius: 0;
 
-    text-align: center;
+    background: transparent;
+    color: var(--ink);
 
     font-size: 10px;
     font-weight: 800;
 
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
 
     text-transform: uppercase;
+
+    cursor: pointer;
+}
+
+.application-status-select:focus {
+    border: 2px solid var(--blue);
+}
+
+
+/* APPLICATION FOLLOW-UP */
+
+.application-followup {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 14px;
+
+    color: var(--blue);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.7px;
+
+    text-transform: uppercase;
+}
+
+.application-followup input {
+    width: 16px;
+    height: 16px;
+
+    margin: 0;
+
+    accent-color: var(--blue);
+}
+
+
+/* DELETE BUTTON */
+
+.delete-button {
+    width: 120px;
+
+    padding: 8px 10px;
+
+    border: 1px solid var(--danger);
+
+    border-radius: 0;
+
+    background: transparent;
+    color: var(--danger);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        background-color 150ms ease,
+        color 150ms ease;
+}
+
+.delete-button:hover {
+    background: var(--danger);
+    color: var(--white);
 }
 
 
@@ -911,10 +993,15 @@ footer p {
         grid-template-columns: 34px 1fr;
     }
 
-    .application-status {
+    .application-actions {
         grid-column: 2;
 
-        justify-self: start;
+        align-items: flex-start;
+    }
+
+    .application-status-select,
+    .delete-button {
+        width: 150px;
     }
 
     .reset-section,
