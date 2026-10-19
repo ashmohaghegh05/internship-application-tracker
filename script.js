@@ -18,6 +18,8 @@ const summaryNumbers = document.querySelectorAll(".summary-number");
 const storageKey = "internshipApplications";
 
 
+/* LOAD SAVED APPLICATIONS */
+
 function loadApplications() {
     const savedApplications = localStorage.getItem(storageKey);
 
@@ -29,6 +31,8 @@ function loadApplications() {
 }
 
 
+/* SAVE APPLICATIONS */
+
 function saveApplications() {
     localStorage.setItem(
         storageKey,
@@ -37,13 +41,18 @@ function saveApplications() {
 }
 
 
+/* MAIN STATE */
+
 let applications = loadApplications();
 
 let currentFilter = "All";
 
 
+/* UPDATE SUMMARY NUMBERS */
+
 function updateSummary() {
     const total = applications.length;
+
 
     const active = applications.filter(function(application) {
         return (
@@ -52,13 +61,16 @@ function updateSummary() {
         );
     }).length;
 
+
     const interviews = applications.filter(function(application) {
         return application.status === "Interview";
     }).length;
 
+
     const offers = applications.filter(function(application) {
         return application.status === "Offer";
     }).length;
+
 
     const followUps = applications.filter(function(application) {
         return application.followUp === true;
@@ -74,6 +86,8 @@ function updateSummary() {
     summaryNumbers[4].textContent = followUps;
 }
 
+
+/* RENDER APPLICATIONS */
 
 function renderApplications() {
     applicationList.innerHTML = "";
@@ -126,7 +140,7 @@ function renderApplications() {
     }
 
 
-    /* FILTER HAS NO MATCHES */
+    /* NO FILTER MATCHES */
 
     if (visibleApplications.length === 0) {
         const emptyState = document.createElement("div");
@@ -169,6 +183,8 @@ function renderApplications() {
         article.className = "application-record";
 
 
+        /* APPLICATION NUMBER */
+
         const number = document.createElement("p");
 
         number.className = "application-number";
@@ -182,6 +198,8 @@ function renderApplications() {
 
         number.textContent = displayNumber;
 
+
+        /* APPLICATION DETAILS */
 
         const details = document.createElement("div");
 
@@ -208,14 +226,51 @@ function renderApplications() {
             "Applied " +
             application.dateApplied +
             " • " +
-            (application.followUp ? "Follow-up" : "No action");
+            (application.followUp
+                ? "Follow-up"
+                : "No action");
 
 
-        const status = document.createElement("p");
+        /* EDITABLE STATUS */
 
-        status.className = "application-status";
-        status.textContent = application.status;
+        const status = document.createElement("select");
 
+        status.className = "application-status-select";
+
+
+        const statuses = [
+            "Applied",
+            "Interview",
+            "Offer",
+            "Rejected"
+        ];
+
+
+        statuses.forEach(function(statusName) {
+            const option = document.createElement("option");
+
+            option.value = statusName;
+            option.textContent = statusName;
+
+
+            if (statusName === application.status) {
+                option.selected = true;
+            }
+
+
+            status.appendChild(option);
+        });
+
+
+        status.addEventListener("change", function() {
+            updateApplicationStatus(
+                application.id,
+                status.value
+            );
+        });
+
+
+        /* BUILD RECORD */
 
         details.appendChild(company);
         details.appendChild(role);
@@ -231,6 +286,8 @@ function renderApplications() {
     });
 }
 
+
+/* ADD APPLICATION */
 
 function addApplication() {
     const company = companyInput.value.trim();
@@ -300,7 +357,25 @@ function addApplication() {
 }
 
 
-/* ADD APPLICATION */
+/* UPDATE APPLICATION STATUS */
+
+function updateApplicationStatus(id, newStatus) {
+    applications.forEach(function(application) {
+        if (application.id === id) {
+            application.status = newStatus;
+        }
+    });
+
+
+    saveApplications();
+
+    updateSummary();
+
+    renderApplications();
+}
+
+
+/* ADD APPLICATION EVENT */
 
 form.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -309,7 +384,7 @@ form.addEventListener("submit", function(event) {
 });
 
 
-/* FILTER APPLICATIONS */
+/* FILTER EVENT */
 
 filterStatus.addEventListener("change", function() {
     currentFilter = filterStatus.value;
@@ -321,4 +396,5 @@ filterStatus.addEventListener("change", function() {
 /* INITIAL PAGE LOAD */
 
 updateSummary();
+
 renderApplications();
