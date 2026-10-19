@@ -13,8 +13,29 @@ const applicationList = document.querySelector("#application-list");
 const heroNumber = document.querySelector(".hero-number");
 const summaryNumbers = document.querySelectorAll(".summary-number");
 
+const storageKey = "internshipApplications";
 
-let applications = [];
+
+function loadApplications() {
+    const savedApplications = localStorage.getItem(storageKey);
+
+    if (savedApplications) {
+        return JSON.parse(savedApplications);
+    }
+
+    return [];
+}
+
+
+function saveApplications() {
+    localStorage.setItem(
+        storageKey,
+        JSON.stringify(applications)
+    );
+}
+
+
+let applications = loadApplications();
 
 
 function updateSummary() {
@@ -183,6 +204,8 @@ function addApplication() {
 
 
     applications.push(application);
+
+    saveApplications();
 
 
     formMessage.textContent = "Application added.";
