@@ -223,12 +223,37 @@ function renderApplications() {
         meta.className = "application-meta";
 
         meta.textContent =
-            "Applied " +
-            application.dateApplied +
-            " • " +
-            (application.followUp
-                ? "Follow-up"
-                : "No action");
+            "Applied " + application.dateApplied;
+
+
+        /* FOLLOW-UP CHECKBOX */
+
+        const followUpLabel = document.createElement("label");
+
+        followUpLabel.className = "application-followup";
+
+
+        const followUpCheckbox = document.createElement("input");
+
+        followUpCheckbox.type = "checkbox";
+        followUpCheckbox.checked = application.followUp;
+
+
+        const followUpText = document.createElement("span");
+
+        followUpText.textContent = "Needs follow-up";
+
+
+        followUpCheckbox.addEventListener("change", function() {
+            updateApplicationFollowUp(
+                application.id,
+                followUpCheckbox.checked
+            );
+        });
+
+
+        followUpLabel.appendChild(followUpCheckbox);
+        followUpLabel.appendChild(followUpText);
 
 
         /* EDITABLE STATUS */
@@ -275,6 +300,7 @@ function renderApplications() {
         details.appendChild(company);
         details.appendChild(role);
         details.appendChild(meta);
+        details.appendChild(followUpLabel);
 
 
         article.appendChild(number);
@@ -363,6 +389,24 @@ function updateApplicationStatus(id, newStatus) {
     applications.forEach(function(application) {
         if (application.id === id) {
             application.status = newStatus;
+        }
+    });
+
+
+    saveApplications();
+
+    updateSummary();
+
+    renderApplications();
+}
+
+
+/* UPDATE FOLLOW-UP */
+
+function updateApplicationFollowUp(id, needsFollowUp) {
+    applications.forEach(function(application) {
+        if (application.id === id) {
+            application.followUp = needsFollowUp;
         }
     });
 
